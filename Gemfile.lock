@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ajex13/devise-semantified.git
+  revision: 0724fc3bda333d7540f28e1fd60774e116d6fc9c
+  specs:
+    devise-semantified (0.1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -228,6 +234,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise-semantified!
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
