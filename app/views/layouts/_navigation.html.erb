@@ -1,10 +1,10 @@
-<div class="ui tiny menu">
+<div class="ui olive inverted menu">
     <div class="ui container">
         <a class="active item">
         Home
         </a>
         <a class="item">
-        Messages
+        Readers Guide
         </a>
         <div class="right menu">
         <div class="ui dropdown item">
@@ -16,7 +16,11 @@
             </div>
         </div>
         <div class="item">
-            <div class="ui primary button">Sign Up</div>
+            <%= link_to "Log In", new_user_session_path, class:"ui primary button" %>
+        </div>
+
+        <div class="item">
+            <%= link_to "Sign Up", new_user_registration_path, class:"ui primary button" %>
         </div>
         </div>
     </div>

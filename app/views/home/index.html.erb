@@ -1,2 +1,48 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h2 class="ui center aligned medium blue icon header">
+    <i class="circular inverted book icon"></i>
+    Readers are leaders
+</h2>
+
+<%= link_to "sign out", destroy_user_session_path, method: :delete %>
+<div class="ui equal width center aligned padded grid">
+    <div class="row">
+    <div class="olive column">
+        <h2>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Provident molestias optio quo enim dolorum ullam molestiae sit 
+            omnis temporibus sed voluptas nostrum vel ratione voluptates, quam velit cum vitae. Vitae!
+        </h2>
+    </div>
+    <div class=" black column">
+        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Voluptates similique nihil vel. Quos facere facilis molestiae voluptas voluptatem 
+            possimus numquam et id voluptatum veritatis laudantium, deserunt corporis iusto ipsa dolores.
+        </h2>
+    </div>
+    </div>
+    <div class="row" style="background-color: #869D05;color: #FFFFFF;">
+    <div class="column">Readers digest</div>
+    </div>
+    <div class="row">
+    <div class="black column">
+        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Excepturi facere mollitia eveniet aperiam, eum nesciunt. 
+            Totam non quas impedit et ad optio nobis provident, inventore 
+            corrupti accusantium! Eius, reprehenderit obcaecati!
+        </h2>
+    </div>
+    <div class="olive column">
+        <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+            Placeat veritatis veniam non suscipit natus sint quae quisquam libero harum autem laborum repudiandae, 
+            nulla adipisci doloremque velit rerum blanditiis unde ipsam.
+        </h2>
+    </div>
+    </div>
+</div>
+
+  <div class="ui two column grid">
+    
+    <%= image_tag "library.jpeg", style: 'height:200%;width:50%;' %>
+    <%= image_tag "books.jpeg", style: 'height:310px;width:50%;' %>
+  </div> 
+    
