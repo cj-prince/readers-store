@@ -6,23 +6,20 @@
 // reqiure jquery, 
 
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import "semantic-ui";
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+import Rails from "@rails/ujs";
+import Turbolinks from "turbolinks";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
 
 
 
 Rails.start()
 Turbolinks.start()
 require("semantic-ui-sass")
+require("jquery")
 ActiveStorage.start()
 
 
-$(document).on('Turbolinks:load', function(){
-    $('.ui.dropdown')
-  .dropdown()
-;
-
+$(document).on('turbolinks:load', function(){
+  $('.ui.dropdown').dropdown();
 })

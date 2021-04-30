@@ -1,0 +1,25 @@
+
+<div class="ui  ">
+    <div class="ui column  grid">
+        <div class="column">
+            <%= form_for @book do |f| %>
+                <div class="ui form">
+                    <div class="field">
+                            <%= f.label :Title %>
+                            <%= f.text_field :title, class:'ui left icon input',placeholder:'title' %>
+                    </div>
+                    <div class="field">
+                        <%= f.label :Description %>
+                        <%= f.text_area :description, class:'ui left icon input',placeholder:'description' %>
+                    </div>
+                    <div class="field">
+                        <%= f.label :Author %>
+                        <%= f.text_field :author, class:'ui left icon input',placeholder:'author' %>
+                    <i class="user icon"></i>
+                    </div>
+                </div>
+                <%= f.submit class:"ui primary button"  %>
+            <% end %>
+        </div>
+    </div>
+</div>    
