@@ -2,5 +2,7 @@
 <h2><%= @book.author%></h2>
 <p><%= @book.description%></p>
 
-<%= link_to 'Edit', edit_book_path %>
-<%= link_to 'Delete', book_path, method: :delete, data: {confirm:'Are your sure?'}  %>
+<% if current_user.admin? %>
+    <%= link_to 'Edit', edit_book_path %>
+    <%= link_to 'Delete', book_path, method: :delete, data: {confirm:'Are your sure?'}  %>
+<% end %>

@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
     before_action :find_book, only: [:show, :edit, :update, :destroy]
+    before_action :require_admin_user, only: [:edit, :create, :update, :destroy]
+    
 
     def index
         @books = Book.all.order('created_at DESC')
@@ -25,6 +27,7 @@ class BooksController < ApplicationController
     end
 
     def edit
+
     end
 
     def update
@@ -51,5 +54,12 @@ class BooksController < ApplicationController
 
     def find_book
         @book = Book.find(params[:id])
+    end
+
+    def require_admin_user
+        if current_user != current_user.admin?
+            flash[:alert] = "Can't perform this operation"
+            redirect_to root_path
+        end
     end
 end

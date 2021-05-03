@@ -1,27 +1,30 @@
 <div class="ui olive inverted menu">
     <div class="ui container">
-        <a class="active item">
-        Home
-        </a>
-        <a class="item">
-        Readers Guide
-        </a>
+        <%= link_to 'Home', welcome_path, class: 'item' %> 
+        <% if user_signed_in? %>
+            <%= link_to 'Readers Guide', books_path, class: 'item' %>
+        <% end %>
         <div class="right menu">
-        <div class="ui dropdown item">
-            Language <i class="dropdown icon"></i>
-            <div class="menu">
-            <a class="item">English</a>
-            <a class="item">Russian</a>
-            <a class="item">Spanish</a>
-            </div>
-        </div>
-        <div class="item">
-            <%= link_to "Log In", new_user_session_path, class:"ui primary button" %>
-        </div>
+            <% if user_signed_in? %>
+                <div class="ui dropdown item">
+                    Profile <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'item' %>
+                        <% if current_user.admin? %>
+                         <%= link_to "Add Book", new_book_path , class:'item' %>
+                        <% end %>
+                        <a class="item">Spanish</a>
+                    </div>
+                </div>
+            <% else %>
+                <div class="item">
+                    <%= link_to "Log In", new_user_session_path, class:"ui primary button" %>
+                </div>
 
-        <div class="item">
-            <%= link_to "Create Account", new_user_registration_path, class:"ui primary button" %>
-        </div>
+                <div class="item">
+                    <%= link_to "Create Account", new_user_registration_path, class:"ui primary button" %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
