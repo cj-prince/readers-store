@@ -3,10 +3,11 @@
     <div class="ui column  grid">
         <div class="column">
             <%= form_for @book do |f| %>
+                <%= select_tag(:category_id, options_for_select(@categories), :prompt => 'Select a category') %>
                 <div class="ui form">
                     <div class="field">
-                            <%= f.label :Title %>
-                            <%= f.text_field :title, class:'ui left icon input',placeholder:'title' %>
+                        <%= f.label :Title %>
+                        <%= f.text_field :title, class:'ui left icon input',placeholder:'title' %>
                     </div>
                     <div class="field">
                         <%= f.label :Description %>
