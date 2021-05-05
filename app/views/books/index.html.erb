@@ -1,3 +1,9 @@
+<%= form_tag(books_path, method: :get) do %>
+  <p> Search for an Author </p>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag ("Search") %>
+<% end %>
+
 <% if @books.count == 0 %>
     <h2>There are books currently in this category</h2>
 <% else %>

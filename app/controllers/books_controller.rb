@@ -3,6 +3,9 @@ class BooksController < ApplicationController
     before_action :require_admin_user, only: [:edit, :create, :update, :destroy]
 
     def index
+        if params[:search]
+            search_books
+        end
         if params[:category].blank?
             @books = Book.paginate(page: params[:page], per_page: 4).order('created_at DESC')
         else
@@ -12,11 +15,13 @@ class BooksController < ApplicationController
     end
 
     def new
+       
         @book = Book.new
         @Categories = Category.all.map{ |c| [c.name, c.id] }
     end
 
     def show
+        @book = Book.find(params[:id])
     end
     
    
@@ -49,18 +54,24 @@ class BooksController < ApplicationController
         redirect_to root_path
     end
 
-    
+    def search_books
+        if @book = Book.all.find{|book| book.author.include?(params[:search])}
+            redirect_to book_path(@book)
+        end
+    end
+
 
 
 
     private
     def book_params
-        params.require(:book).permit(:title, :description, :author, :category_id)
+        params.require(:book).permit(:title, :description, :author, :category_id, :book_img)
     end
 
     def find_book
         @book = Book.find(params[:id])
     end
+
     def require_admin_user
         if current_user != current_user.admin?
             flash[:alert] = "Can't perform this operation"
