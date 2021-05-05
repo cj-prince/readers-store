@@ -7,6 +7,14 @@
         <div class="right menu">
             <% if user_signed_in? %>
                 <div class="ui dropdown item">
+                    Category<i class="dropdown icon"></i>
+                    <div class="menu">
+                        <% Category.all.each do|category| %>
+                            <%= link_to category.name, books_path(category: category.name) , class:'item' %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="ui dropdown item">
                     <%= 'Admin' if current_user.admin? %> 
                     Profile<i class="dropdown icon"></i>
                     <div class="menu">
@@ -17,6 +25,7 @@
                         <a class="item">Spanish</a>
                     </div>
                 </div>
+                
             <% else %>
                 <div class="item">
                     <%= link_to "Log In", new_user_session_path, class:"ui primary button" %>

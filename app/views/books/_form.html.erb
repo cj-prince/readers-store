@@ -2,8 +2,8 @@
 <div class="ui  ">
     <div class="ui column  grid">
         <div class="column">
-            <%= form_for @book do |f| %>
-                <%= select_tag(:category_id, options_for_select(@categories), :prompt => 'Select a category') %>
+            <%= form_for @book, :html => {:multipart => true} do |f| %>
+            <%= collection_select :category, :id, Category.all.order('name ASC'), :id, :name,{include_blank: 'Select Category'} %>
                 <div class="ui form">
                     <div class="field">
                         <%= f.label :Title %>

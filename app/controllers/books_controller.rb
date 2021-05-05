@@ -3,7 +3,12 @@ class BooksController < ApplicationController
     before_action :require_admin_user, only: [:edit, :create, :update, :destroy]
 
     def index
-        @books = Book.all.order('created_at DESC')
+        if params[:category].blank?
+            @books = Book.paginate(page: params[:page], per_page: 4).order('created_at DESC')
+        else
+            @category_id = Category.find_by(name: params[:category]).id
+            @books = Book.where(:category_id => @category_id).order('created_at DESC')
+        end
     end
 
     def new
@@ -31,6 +36,7 @@ class BooksController < ApplicationController
     end
 
     def update
+        @book.Category_id = params[:Category_id]
         if @book.update(book_params)
             redirect_to book_path (@book)
         else

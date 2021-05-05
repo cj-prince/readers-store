@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'semantic-ui-sass'
 gem 'devise'
 gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
+gem 'will_paginate', '~> 3.1.0'
+gem "will_paginate_semantic_ui"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
