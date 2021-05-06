@@ -4,3 +4,14 @@
     @extend .field;
     @extend .error;
 }
+
+.book {
+    height: 350px;
+    width:250px;
+}
+
+.bottom {
+    margin-top: 30px;
+    justify-content: center;
+    bottom: absolute;
+}

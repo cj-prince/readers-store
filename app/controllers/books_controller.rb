@@ -7,7 +7,7 @@ class BooksController < ApplicationController
             search_books
         end
         if params[:category].blank?
-            @books = Book.paginate(page: params[:page], per_page: 4).order('created_at DESC')
+            @books = Book.paginate(page: params[:page], per_page: 8).order('created_at DESC')
         else
             @category_id = Category.find_by(name: params[:category]).id
             @books = Book.where(:category_id => @category_id).order('created_at DESC')
@@ -15,8 +15,7 @@ class BooksController < ApplicationController
     end
 
     def new
-       
-        @book = Book.new
+        @book =  Book.new
         @Categories = Category.all.map{ |c| [c.name, c.id] }
     end
 
@@ -28,10 +27,11 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(book_params)
-        @book.Category_id = params[:Category_id]
+        
         if @book.save
             redirect_to root_path
         else
+            flash[:error] = @book.errors.full_messages.join(", ")
             render 'new'
         end
     end
@@ -41,10 +41,10 @@ class BooksController < ApplicationController
     end
 
     def update
-        @book.Category_id = params[:Category_id]
         if @book.update(book_params)
             redirect_to book_path (@book)
         else
+            
             render 'edit'
         end  
     end
@@ -73,7 +73,7 @@ class BooksController < ApplicationController
     end
 
     def require_admin_user
-        if current_user != current_user.admin?
+        unless current_user && current_user.admin?
             flash[:alert] = "Can't perform this operation"
             redirect_to root_path
         end

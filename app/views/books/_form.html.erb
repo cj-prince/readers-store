@@ -3,9 +3,13 @@
     <div class="ui column  grid">
         <div class="column">
             <%= form_for @book, :html => {:multipart => true} do |f| %>
-            <%= collection_select :category, :id, Category.all.order('name ASC'), :id, :name,{include_blank: 'Select Category'} %>
-            <%= f.file_field :book_img %>
                 <div class="ui form">
+                    <div class="field">
+                        <%= f.collection_select :category_id, Category.order(name: :asc), :id, :name, {include_blank: 'Select Category'} %>
+                    </div>
+                    <div class="field">
+                        <%= f.file_field :book_img %>
+                    </div>
                     <div class="field">
                         <%= f.label :Title %>
                         <%= f.text_field :title, class:'ui left icon input',placeholder:'title' %>

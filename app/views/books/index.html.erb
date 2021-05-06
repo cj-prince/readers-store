@@ -1,15 +1,26 @@
-<%= form_tag(books_path, method: :get) do %>
-  <p> Search for an Author </p>
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag ("Search") %>
-<% end %>
+<div align= 'center'>
+     <%= form_tag(books_path, method: :get) do %>
+        <p> Search for an Author </p>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag ("Search") %>
+    <% end %>
+</div><br>
+
 
 <% if @books.count == 0 %>
     <h2>There are books currently in this category</h2>
 <% else %>
-    <% @books.each do |book| %>
-        <h2><%= link_to book.title, book_path(book) %></h2>
-    <% end %>
-<% end %>
-<%= will_paginate @collection, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+    <div class="ui grid">
+        <% @books.each do |book| %>
+            <div class="four wide column">
+                <a href="/books/<%=book.id %>">
+                    <%= image_tag book.book_img.url(:book_index), class:'book' %>
+                </a>
+            </div>
+        <% end %>
+    </div>
 
+<% end %>
+<div class="bottom" align= 'center'>
+    <%= will_paginate @collection, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
+</div>
