@@ -57,9 +57,12 @@ class BooksController < ApplicationController
     def search_books
         if @book = Book.all.find{|book| book.author.include?(params[:search])}
             redirect_to book_path(@book)
+        else
+            flash[:alert] = "Book not found"
         end
     end
 
+  
 
 
 

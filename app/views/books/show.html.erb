@@ -1,6 +1,19 @@
-<h2><%= @book.title %></h2>
-<h2><%= @book.author%></h2>
-<p><%= @book.description%></p>
+<div class="ui grid">
+    <div class="two wide column">
+        <div class="">
+            <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
+        </div>
+    </div>
+    <div class="now eight wide column">
+        <div class="ui segment"> 
+            <h2><%= @book.title %></h2>
+            <h2><%= @book.author%></h2>
+            <p><%= @book.description%></p>
+        </div>
+    </div>
+</div>
+<%= link_to "Back", root_path %> <br>
+
 
 <% if current_user.admin? %>
     <%= link_to 'Edit', edit_book_path %>
