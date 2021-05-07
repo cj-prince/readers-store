@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :books do
+    resources :borrows
+  end
   devise_for :users
   get 'welcome', to: 'home#welcome'
   root 'books#index'
