@@ -1,5 +1,9 @@
 class BorrowsController < ApplicationController
     before_action :find_book
+    before_action :find_borrow, only: [:edit, :update, :destroy]
+    before_action :require_current_user
+
+
     def new
         @borrow = Borrow.new
     end
@@ -15,6 +19,25 @@ class BorrowsController < ApplicationController
         end
     end
 
+    def edit
+       
+    end
+
+    def update
+       
+
+        if @borrow.update(borrow.params)
+            redirect_to book_path(@book)
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @borrow.destroy
+        redirect_to book_path(@book)
+    end
+
     private
 
     def borrow_params
@@ -23,5 +46,16 @@ class BorrowsController < ApplicationController
 
     def find_book
         @book = Book.find(params[:book_id])
+    end
+
+    def find_borrow
+        @borrow = Borrow.find(params[:id])
+    end
+
+    def require_current_user
+        unless current_user 
+            flash[:alert] = "Can't perform this operation"
+            redirect_to root_path
+        end
     end
 end

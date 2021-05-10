@@ -1,0 +1,6 @@
+<p><%= borrow.start_date %></p>
+<p><%= borrow.end_date %></p>
+<p><%= borrow.comment %></p>
+
+<%= link_to "Check request", edit_book_borrow_path(borrow.book, borrow) %>///
+<%= link_to "Delete request", book_borrow_path(borrow.book, borrow), method: :delete, data: {confirm: "Are you sure"} %>

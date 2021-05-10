@@ -12,10 +12,19 @@
         </div>
     </div>
 </div>
+
+<%= link_to "Book Borrowing Request", new_book_borrow_path(@book) %> <br> 
+
+<div class="ui vertical pointing menu">
+    <a class="active item">
+        <%= render @book.borrow %>
+    </a>
+</div>
+
+
+
+
 <%= link_to "Back", root_path %> <br>
-
-<%= link_to "Book Borrowing Request", new_book_borrow_path(@book) %> <br>
-
 
 <% if current_user.admin? %>
     <%= link_to 'Edit', edit_book_path %>
