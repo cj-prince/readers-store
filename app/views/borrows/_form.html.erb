@@ -1,27 +1,31 @@
-<div class="ui  ">
-    <div class="ui column  grid">
-        <div class="column">
-            <%= form_for ([@book, @book.borrow.build]) do |f| %>
-                <div class="ui form">
-                    <div class="field">
-                            <%= f.label :start_date %>
-                            <%= f.date_field :start_date, class:'ui left icon input',placeholder:'Start_date' %>
+<% if user_signed_in? && current_user %>
+    <div class="ui  ">
+        <div class="ui column  grid">
+            <div class="column">
+                <%= form_for ([@book, @book.borrow.build]) do |f| %>
+                    <div class="ui form">
+                        <div class="field">
+                                <%= f.label :start_date %>
+                                <%= f.date_field :start_date, class:'ui left icon input',placeholder:'Start_date' %>
+                        </div>
+                        <div class="field">
+                            <%= f.label :End_date %>
+                            <%= f.date_field :end_date, class:'ui left icon input',placeholder:'End_date' %>
+                        </div>
+                        <div class="field">
+                            <%= f.label :comment %>
+                            <%= f.text_field :comment, class:'ui left icon input',placeholder:'State reason to borrow' %>
+                        <i class="user icon"></i>
+                        </div>
                     </div>
-                    <div class="field">
-                        <%= f.label :End_date %>
-                        <%= f.date_field :end_date, class:'ui left icon input',placeholder:'End_date' %>
-                    </div>
-                    <div class="field">
-                        <%= f.label :comment %>
-                        <%= f.text_field :comment, class:'ui left icon input',placeholder:'State reason to borrow' %>
-                    <i class="user icon"></i>
-                    </div>
-                </div>
-                <%= f.submit class:"ui primary button"  %>
-            <% end %>
+                    <%= f.submit class:"ui primary button"  %>
+                <% end %>
+            </div>
         </div>
-    </div>
-</div>    
+    </div>    
+<% else %>
+    <%= redirect_to root_path %>
+<% end %>
 
 
 
