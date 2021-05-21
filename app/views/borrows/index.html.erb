@@ -1,0 +1,29 @@
+<table class="ui celled table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>State Date</th>
+        <th>End Date</th>
+        <th>Comment</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <%- @borrows.each do |borrow| %>
+        <tr>
+            <td><%= borrow.user.email %></td>
+            <td><%= borrow.start_date %></td>
+            <td ><%= borrow.end_date %></td>
+            <td ><%= borrow.comment %></td>
+            <td ><%= borrow.status %></td>
+            <td ><% if current_user.admin? %>
+                <%= link_to "Approve", approve_borrow_path(borrow), method: :put %>
+                <%= link_to "Deny", deny_borrow_path(borrow), method: :put %>
+            <% end %>
+            <%= link_to "Delete request", book_borrow_path(borrow.book, borrow), method: :delete, data: {confirm: "Are you sure"} %>
+        </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

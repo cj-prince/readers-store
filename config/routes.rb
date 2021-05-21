@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   resources :books do
-    resources :borrows
+    resources :borrows, except: :index
   end
+
+  resources :borrows, only: :index do
+    member do
+      put :approve
+      put :deny
+    end
+  end  
   devise_for :users
   get 'welcome', to: 'home#welcome'
   root 'books#index'

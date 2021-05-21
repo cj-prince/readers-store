@@ -11,15 +11,19 @@ class AdminController < ApplicationController
     def show
         @borrow = Borrow.find(params[:id])
     end
-
-    def approved
-        @borrow.book_id = @book.id
-        @borrow.user_id = current_user.id
         
-    end
+
+
 
     def blacklist
+        @user = User.all
+        unless @borrow.user_id.returned
+            
         
+
+    end
+    def show_user
+        @user = user.all
     end
 
     private
